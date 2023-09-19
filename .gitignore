@@ -23,6 +23,9 @@
 *.db
 *.csv
 *.txt
+*.ods
+*.backup
+*.sql
 
 # generated html
 /public/*

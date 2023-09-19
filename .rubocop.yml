@@ -1,0 +1,48 @@
+
+# Monitors are wide, and horizontal scroll works fine
+Layout/LineLength:
+  Enabled: false
+
+# There's no performance difference, I like single quotes for short strings, and double for long
+Style/StringLiterals:
+  Enabled: false
+
+# I like explicit returns
+Style/RedundantReturn:
+  Enabled: false
+
+# I don't think these are always needed
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# I feel these are too strict by default
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/ModuleLength:
+  Enabled: false
+Metrics/ParametersList:
+  Enabled: false
+
+# Global variable for passed in arguments
+Style/GlobalVars:
+  Enabled: false
+
+# I use comments to mark the end of transaction blocks
+Style/CommentedKeyword:
+  Enabled: false
+
+# I don't control what the TMDB API uses for the ISO 639-1 code in their response
+Naming/VariableNumber:
+  Enabled: false
+
+# I don't want to break compatibilyty with pre 3.1 yet, and when I do I don't like the mixed style so it'll be `consistent` here
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never # possibly change to consistent

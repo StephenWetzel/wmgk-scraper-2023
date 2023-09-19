@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bigdecimal (3.1.4)
+    sequel (5.72.0)
+      bigdecimal
+    sqlite3 (1.6.6-x86_64-linux)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  sequel
+  sqlite3
+
+BUNDLED WITH
+   2.4.14
