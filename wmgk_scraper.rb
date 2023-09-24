@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# Create an empty SQLite database with a single table:
+# CREATE TABLE "plays" (
+#   "play_id" INTEGER UNIQUE,
+#   "artist"  TEXT,
+#   "title" TEXT,
+#   "play_dt" TEXT,
+#   "timestamp" INTEGER,
+#   "wmgk_id" INTEGER UNIQUE,
+#   PRIMARY KEY("play_id")
+# );
+
+# An empty database is provided in the repo named wmgk.db.empty, rename that to just wmgk.db.
+
 require 'date'
 require 'json'
 require 'net/http'
