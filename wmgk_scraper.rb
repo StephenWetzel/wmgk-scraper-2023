@@ -39,7 +39,7 @@ def filter_artist?(artist)
 end
 
 def add_plays(stop_dt, limit = 100)
-  iteration = 160 # this should be 0 normally, set it higher if you are trying to manually resume a previous scrape
+  iteration = 0 # this should be 0 normally, set it higher if you are trying to manually resume a previous scrape
   earliest_play_dt = DateTime.now
   until earliest_play_dt.to_datetime < stop_dt.to_datetime do
     offset = iteration * limit
