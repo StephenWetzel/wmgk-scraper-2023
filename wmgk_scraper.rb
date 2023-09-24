@@ -34,13 +34,18 @@ def clean_up_string(string)
   return string.gsub(/[a-zA-Z0-9']+/) { |w| w.capitalize }
 end
 
-def add_plays(stop_dt)
-  iteration = 160
+def filter_artist?(artist)
+  return ["Andre   pk", "Andre   th", "Andre' Gardner", "Steven Van Zandt"].include? artist
+end
+
+def add_plays(stop_dt, limit = 100)
+  iteration = 160 # this should be 0 normally, set it higher if you are trying to manually resume a previous scrape
   earliest_play_dt = DateTime.now
   until earliest_play_dt.to_datetime < stop_dt.to_datetime do
-    offset = iteration * 100
-    plays_json = get_plays(offset: offset)
+    offset = iteration * limit
+    plays_json = get_plays(offset: offset, limit: limit)
     plays_json.each do |play_json|
+      next if filter_artist?(clean_up_string(play_json[:artist]))
       play_dt = Time.at(play_json[:timestamp])
       DB[:plays].insert_conflict.insert(
         artist: clean_up_string(play_json[:artist]),
@@ -51,13 +56,13 @@ def add_plays(stop_dt)
       )
       earliest_play_dt = play_dt if play_dt.to_datetime < earliest_play_dt.to_datetime
     end
-    iteration += 1
     # break if iteration >= 10
     puts "iteration: #{iteration}, earliest_play_dt: #{earliest_play_dt}"
     sleep 0.1
+    iteration += 1
   end
 end
 
-
-add_plays(DateTime.parse('2023-06-01'))
+# This will scrape songs, from today until 2023-06-01, 100 songs at a time
+add_plays(DateTime.parse('2023-06-01'), 100)
 
